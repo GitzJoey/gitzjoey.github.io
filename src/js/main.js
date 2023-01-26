@@ -1,8 +1,9 @@
 import '../scss/style.scss';
 
 import $ from 'jquery';
-import * as bootstrap from 'bootstrap';
+import AOS from 'aos';
 import feather from 'feather-icons';
+import * as bootstrap from 'bootstrap';
 
 window.$ = $;
 
@@ -155,5 +156,6 @@ $(() => {
 });
 
 $(() => {
+    AOS.init();
     feather.replace();
 });
