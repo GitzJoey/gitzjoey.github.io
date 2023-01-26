@@ -155,7 +155,37 @@ $(() => {
     })();
 });
 
+function getScrollTop() {
+    var B = document.body;
+    var D = document.documentElement;
+    D = (D.clientHeight) ? D : B;
+
+    return D.scrollTop;
+}
+
 $(() => {
     AOS.init();
     feather.replace();
+});
+
+$(() => {
+    $(window).on('scroll', () => {
+        if (getScrollTop() > 100) {
+            $('.backto-top').css('opacity', '1');
+        } else {
+            $('.backto-top').css('opacity', '0');
+        }
+    });
+    
+    $('.backto-top').on('click', function () {
+        $('html, body').animate({
+            scrollTop: 0,
+            easingType: 'linear',
+        }, 500);
+        return false;
+    });
+});
+
+$(() => {
+
 });
