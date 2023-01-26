@@ -3,9 +3,12 @@ import '../scss/style.scss';
 import $ from 'jquery';
 import AOS from 'aos';
 import feather from 'feather-icons';
+import 'slick-carousel';
 import * as bootstrap from 'bootstrap';
 
 window.$ = $;
+
+/* #region Animation-Hero */
 
 $(() => {
     (function () {
@@ -155,6 +158,19 @@ $(() => {
     })();
 });
 
+/* #endregion */
+
+/* #region AOS & feathericons */
+
+$(() => {
+    AOS.init();
+    feather.replace();
+});
+
+/* #endregion */
+
+/* #region ScrollToTop */
+
 function getScrollTop() {
     var B = document.body;
     var D = document.documentElement;
@@ -162,11 +178,6 @@ function getScrollTop() {
 
     return D.scrollTop;
 }
-
-$(() => {
-    AOS.init();
-    feather.replace();
-});
 
 $(() => {
     $(window).on('scroll', () => {
@@ -186,6 +197,456 @@ $(() => {
     });
 });
 
-$(() => {
+/* #endregion */
 
+/* #region MobileMenu */
+
+$(() => {
+    $('.humberger-menu').on('click', function (e) {
+        e.preventDefault();
+        $('.popup-mobile-menu').addClass('menu-open');
+        $('html').css({
+            overflow: 'hidden'
+        });
+    });
+
+    $('.close-menu-activation, .popup-mobile-menu .primary-menu .nav-item a').on('click', function (e) {
+        e.preventDefault();
+        $('.popup-mobile-menu').removeClass('menu-open');
+        $('.popup-mobile-menu .has-droupdown > a').removeClass('open').siblings('.submenu').removeClass('active').slideUp('400');
+        $('html').css({
+            overflow: ''
+        });
+    });
+
+    $('.popup-mobile-menu').on('click', function (e) {
+        e.target === this && $('.popup-mobile-menu').removeClass('menu-open');
+        $('html').css({
+            overflow: ''
+        });
+    });
+
+    $('.popup-mobile-menu .has-droupdown > a').on('click', function (e) {
+        e.preventDefault();
+        $(this).siblings('.submenu').toggleClass('active').slideToggle('400');
+        $(this).toggleClass('open');
+        $('html').css({
+            overflow: ''
+        });
+    });
+
+    $('.nav-pills .nav-link').on('click', function (e) {
+        $('.rn-popup-mobile-menu').removeClass('menu-open');
+        $('html').css({
+            overflow: ''
+        });
+    });
 });
+
+/* #endregion */
+
+/* #region jQuery One Page Nav */
+
+(function($, window, document, undefined){
+
+	var OnePageNav = function(elem, options){
+		this.elem = elem;
+		this.$elem = $(elem);
+		this.options = options;
+		this.metadata = this.$elem.data('plugin-options');
+		this.$win = $(window);
+		this.sections = {};
+		this.didScroll = false;
+		this.$doc = $(document);
+		this.docHeight = this.$doc.height();
+	};
+
+	OnePageNav.prototype = {
+		defaults: {
+			navItems: 'a',
+			currentClass: 'current',
+			changeHash: false,
+			easing: 'swing',
+			filter: '',
+			scrollSpeed: 750,
+			scrollThreshold: 0.5,
+			begin: false,
+			end: false,
+			scrollChange: false
+		},
+
+		init: function() {
+			this.config = $.extend({}, this.defaults, this.options, this.metadata);
+
+			this.$nav = this.$elem.find(this.config.navItems);
+
+			if(this.config.filter !== '') {
+				this.$nav = this.$nav.filter(this.config.filter);
+			}
+
+			this.$nav.on('click.onePageNav', $.proxy(this.handleClick, this));
+
+			this.getPositions();
+
+			this.bindInterval();
+
+			this.$win.on('resize.onePageNav', $.proxy(this.getPositions, this));
+
+			return this;
+		},
+
+		adjustNav: function(self, $parent) {
+			self.$elem.find('.' + self.config.currentClass).removeClass(self.config.currentClass);
+			$parent.addClass(self.config.currentClass);
+		},
+
+		bindInterval: function() {
+			var self = this;
+			var docHeight;
+
+			self.$win.on('scroll.onePageNav', function() {
+				self.didScroll = true;
+			});
+
+			self.t = setInterval(function() {
+				docHeight = self.$doc.height();
+
+				if(self.didScroll) {
+					self.didScroll = false;
+					self.scrollChange();
+				}
+
+				if(docHeight !== self.docHeight) {
+					self.docHeight = docHeight;
+					self.getPositions();
+				}
+			}, 250);
+		},
+
+		getHash: function($link) {
+			return $link.attr('href').split('#')[1];
+		},
+
+		getPositions: function() {
+			var self = this;
+			var linkHref;
+			var topPos;
+			var $target;
+
+			self.$nav.each(function() {
+				linkHref = self.getHash($(this));
+				$target = $('#' + linkHref);
+
+				if($target.length) {
+					topPos = $target.offset().top;
+					self.sections[linkHref] = Math.round(topPos);
+				}
+			});
+		},
+
+		getSection: function(windowPos) {
+			var returnValue = null;
+			var windowHeight = Math.round(this.$win.height() * this.config.scrollThreshold);
+
+			for(var section in this.sections) {
+				if((this.sections[section] - windowHeight) < windowPos) {
+					returnValue = section;
+				}
+			}
+
+			return returnValue;
+		},
+
+		handleClick: function(e) {
+			var self = this;
+			var $link = $(e.currentTarget);
+			var $parent = $link.parent();
+			var newLoc = '#' + self.getHash($link);
+
+			if(!$parent.hasClass(self.config.currentClass)) {
+				if(self.config.begin) {
+					self.config.begin();
+				}
+
+				self.adjustNav(self, $parent);
+
+				self.unbindInterval();
+
+				self.scrollTo(newLoc, function() {
+					if(self.config.changeHash) {
+						window.location.hash = newLoc;
+					}
+
+					self.bindInterval();
+
+					if(self.config.end) {
+						self.config.end();
+					}
+				});
+			}
+
+			e.preventDefault();
+		},
+
+		scrollChange: function() {
+			var windowTop = this.$win.scrollTop();
+			var position = this.getSection(windowTop);
+			var $parent;
+
+			if(position !== null) {
+				$parent = this.$elem.find('a[href$="#' + position + '"]').parent();
+
+				if(!$parent.hasClass(this.config.currentClass)) {
+					this.adjustNav(this, $parent);
+
+					if(this.config.scrollChange) {
+						this.config.scrollChange($parent);
+					}
+				}
+			}
+		},
+
+		scrollTo: function(target, callback) {
+			var offset = $(target).offset().top;
+
+			$('html, body').animate({
+				scrollTop: offset
+			}, this.config.scrollSpeed, this.config.easing, callback);
+		},
+
+		unbindInterval: function() {
+			clearInterval(this.t);
+			this.$win.unbind('scroll.onePageNav');
+		}
+	};
+
+	OnePageNav.defaults = OnePageNav.prototype.defaults;
+
+	$.fn.onePageNav = function(options) {
+		return this.each(function() {
+			new OnePageNav(this, options).init();
+		});
+	};
+
+})($, window, document);
+
+$(() => {
+    $('.onepagenav').onePageNav({
+        currentClass: 'current',
+        changeHash: true,
+        scrollSpeed: 500,
+        scrollThreshold: 0.2,
+        filter: ':not(.external)',
+        easing: 'swing',
+        scrollChange: function($currentListItem) {
+            
+        }
+    });
+});
+
+/* #endregion */
+
+/* #region Slick */
+
+$(() => {
+    $('.testimonial-activation').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: true,
+        adaptiveHeight: true,
+        cssEase: 'linear',
+        prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-arrow-left"></i></button>',
+        nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-arrow-right"></i></button>'
+    });
+    
+    $('.testimonial-item-one').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        dots: true,
+        arrows: true,
+        adaptiveHeight: true,
+        cssEase: 'linear',
+        prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-chevron-left"></i></button>',
+        nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-chevron-right"></i></button>',
+        responsive: [
+        {
+            breakpoint: 1200,
+            settings: {
+                arrows: false,
+            }
+        }]
+    });
+    
+    
+    $('.portfolio-slick-activation').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: false,
+        arrows: true,
+        cssEase: 'linear',
+        adaptiveHeight: true,
+        prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-arrow-left"></i></button>',
+        nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-arrow-right"></i></button>',
+        responsive: [{
+                breakpoint: 1124,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 868,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false,
+                }
+            }
+        ]
+    });
+    
+    
+    $('.blog-slick-activation').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: false,
+        arrows: true,
+        cssEase: 'linear',
+        adaptiveHeight: true,
+        prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-arrow-left"></i></button>',
+        nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-arrow-right"></i></button>',
+        responsive: [{
+                breakpoint: 1124,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 868,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false,
+                }
+            }
+        ]
+    });
+    
+    $('.testimonial-activation-item-3').slick({
+        arrows: true,
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+        prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-chevron-left"></i></button>',
+        nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-chevron-right"></i></button>',
+        responsive: [{
+                breakpoint: 1124,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    arrows: false,
+                }
+            },
+            {
+                breakpoint: 577,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                }
+            }
+        ]
+    });
+    
+    $('.brand-activation-item-5').slick({
+        arrows: true,
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        adaptiveHeight: true,
+        prevArrow: '<button class="slide-arrow prev-arrow"><i class="feather-chevron-left"></i></button>',
+        nextArrow: '<button class="slide-arrow next-arrow"><i class="feather-chevron-right"></i></button>',
+        responsive: [{
+                breakpoint: 1124,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 868,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+});
+
+/* #endregion */
+
+/* #region Demo */
+
+$(() => {
+    $('.popuptab-area li a.demo-dark').on('click', function (e) {
+        $('.demo-modal-area').addClass('dark-version');
+        $('.demo-modal-area').removeClass('white-version');
+    });
+
+    $('.popuptab-area li a.demo-light').on('click', function (e) {
+        $('.demo-modal-area').removeClass('dark-version');
+        $('.demo-modal-area').addClass('white-version');
+    })
+
+    $('.rn-right-demo').on('click', function (e) {
+        $('.demo-modal-area').addClass('open');
+    })
+
+    $('.demo-close-btn').on('click', function (e) {
+        $('.demo-modal-area').removeClass('open');
+    })
+});
+
+/* #endregion */
