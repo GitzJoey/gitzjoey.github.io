@@ -2,11 +2,13 @@
 import { ref } from 'vue'
 import Lucide from './Lucide'
 
-const header = ref
+const header = ref({
+
+});
 </script>
 
 <template>
-    <header>
+    <header class="bg-transparent">
         <ul class="flex flex-wrap justify-end gap-2">
             <li>
                 <a href="https://www.linkedin.com/" class="bg-blue-600 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded" target=”_blank”>
