@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Lucide from './Lucide'
+import TypedText from './TypedText'
 
 const header = ref({
 
@@ -33,7 +34,7 @@ const header = ref({
             </div>
             <div class="grid justify-items-end">
                 <h1 class="text-7xl font-extrabold">Sugito Chai</h1>
-                <p class="text-xl mt-5">Full Stack Software Engineer</p>
+                <p class="text-xl mt-5"><TypedText /></p>
             </div>
         </div>
     </header>
