@@ -19,6 +19,17 @@
     </section>
 
     <section>
+        <h2 class="text-2xl mt-6 pb-1 border-b font-semibold">Skills</h2>
+        <ul class="mt-2 mb-10">
+            <li class="px-2 mt-1">HTML</li>
+            <li class="px-2 mt-1">CSS</li>
+            <li class="px-2 mt-1">JavaScript</li>
+            <li class="px-2 mt-1">React</li>
+            <li class="px-2 mt-1">Node.js</li>
+        </ul>        
+    </section>
+
+    <section>
         <h2 class="text-2xl mt-6 pb-1 border-b font-semibold">Projects</h2>
         <ul class="mt-1">
             <li class="py-2">
