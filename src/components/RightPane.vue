@@ -6,15 +6,10 @@
     <section>
         <h2 class="text-2xl pb-1 border-b font-semibold">About</h2>
         <p class="mt-4 text-xs">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus
-            deserunt modi qui. Dolorum aliquid quasi velit cupiditate officia magnam impedit, sapiente
-            hic, eaque quaerat ullam fugiat reprehenderit voluptates odit! Error.
-            Tempore fuga iusto eveniet omnis impedit repellat ab repellendus nesciunt similique. Iure
-            voluptates, enim nesciunt tempora amet earum, porro rem ad et sequi corrupti neque quidem?
-            Debitis quo quibusdam nemo.
-            Nam doloremque perferendis tempora asperiores, ullam praesentium et, voluptas pariatur illo
-            aliquid similique, fugiat repellendus ipsa necessitatibus minus hic culpa quasi. Sed
-            voluptate itaque accusantium earum cupiditate ipsa neque magnam!
+            I am a driven and passionate software engineer with 5 years of experience in developing, testing, and delivering high-quality software solutions. My expertise lies in developing scalable and efficient software using various programming languages such as Java, Python, and C++. I have a strong understanding of software development life cycle and have been a part of successful software development projects that have met business requirements and delivered value to clients. I am constantly seeking to improve my technical skills and stay up to date with the latest industry trends and advancements.
+        </p>
+        <p class="mt-4 text-xs">
+            In my most recent role as a Software Engineer at XYZ company, I was responsible for developing and maintaining the company's e-commerce platform. I collaborated with cross-functional teams to implement new features and enhancements to improve the platform's user experience. My contributions resulted in a 25% increase in website traffic and a 20% increase in sales. Additionally, I led a team of junior software engineers and provided guidance and mentorship to help them grow their technical skills. I am a quick learner and have excellent problem-solving skills, which enable me to find innovative solutions to complex problems. I am excited to bring my technical and leadership skills to a new challenge and continue to grow as a software engineer.
         </p>
     </section>
 
