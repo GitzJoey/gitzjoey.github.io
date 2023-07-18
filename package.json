@@ -1,0 +1,14 @@
+{
+  "name": "gitzjoey.github.io",
+  "version": "1.0.0",
+  "description": "GitzJoey's CV",
+  "scripts": {
+    "start": "live-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

@@ -1,0 +1,791 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Print Portofolio</title>
+</head>
+
+<style type="text/css">
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #FAFAFA;
+        font: 12pt "Tahoma";
+    }
+    * {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    @media print {
+        html, body {
+            width: 210mm;
+            height: 297mm;        
+        }
+        
+        hr {
+            margin: 1.5rem 1rem;
+             height: 1px;
+            color: #FF6600;
+        }
+
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+      
+        .table th {
+          padding: 8px 8px;
+          border:1px solid #000000;
+          text-align: center;
+        }
+      
+        .table td {
+          padding: 3px 3px;
+          border:1px solid #000000;
+        }
+
+
+        .line {
+      
+          margin:1.5rem 1rem;
+          height: 2px;
+          display: block;
+          background: #FF6600; 
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+
+        .clearfix {
+          clear: both;
+        }
+
+        .rect-blue {
+          width: 100%;
+          height: 16px;
+          background: #1C4D98;
+        }
+
+        .rect-orange {
+          width: 100%;
+          height: 5px;
+          margin-top: 4px;
+          background: #FF6600;
+        }
+
+        .logo {
+          position: absolute;
+          width: 3rem;
+          left: 27.5%;
+          top: 0;
+        }
+
+        
+        .content-wrapper {
+          width: 100%;
+          height: auto;
+          display: inline-block;
+          
+          font-size: 11pt;
+          margin-top: .5rem;
+          padding-top: 1.5rem;
+        }
+
+        .content-wrapper .bio {
+          float:left;
+          width: 30%;
+          height: auto;
+          height: 100%;
+          /*height: 1140px;*/
+          border-right: 1px solid #D0D0D0;
+        }
+
+        .content-wrapper .story {
+          float:right;
+          width: 70%;
+          font-size: 16px;
+          height: auto;
+          padding: 0.5rem 1.5rem 0 1.5rem;
+        }
+
+        .content-wrapper > :not(:last-child) {
+          float: left;
+        }
+
+        .content-wrapper .clearfix {
+          clear: both;
+        }
+
+        .bio h2 {
+          font-size: 14pt;
+          margin-top: .5rem;
+          margin-left: 1.5rem;
+          display: inline-block;
+          border-bottom: 1px solid #1C4D98;
+        }
+
+        .bio__photo {
+          margin: 0.5rem auto;
+          width: 9rem;
+          height: 9rem;
+          position:relative;
+          border-radius:5px;
+        }
+
+        .bio__photo div {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 100%;
+          height: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        .bio__name {
+          font-size: 14px;
+          font-weight: bold;
+          margin-top: 1px;
+          margin-bottom: 1px;
+          /*background-color: #1C4D98;*/
+          /*color:white;*/
+          margin: auto 1rem;
+          border-radius: 5px;
+          color: black;
+
+          font-size: 14pt;
+          margin-top: .5rem;
+          margin-left: 1.5rem;
+          display: block;
+          border-bottom: 3px solid #1C4D98;
+          /*text-align: left;*/
+        }
+
+        .bio__field {
+          margin: 1.5rem 1.5rem 0 1.5rem;
+        }
+
+        .bio__field:last-child {
+          margin-bottom: 1.5rem;
+        }
+
+        .bio__field p {
+          font-weight: bold;
+        }
+
+        .story__title {
+          margin-bottom: 1.5rem;
+        }
+
+        .story__title .title {
+          padding-left: 1rem;
+          padding-right: 1rem;
+          display: inline;
+          background: white;
+          font-weight: bold;
+        }
+
+        .story__title .line {
+          margin-right: 10px;
+          margin-top: -10px;
+          width: 80%;
+          display: block;
+          border-bottom: 2px solid #FF6600; 
+        }
+
+        .story__section {
+           margin-bottom: 1.5rem;
+        }
+
+        /*.story__section:last-child {
+           margin-bottom: 0;
+        }*/
+
+        .story__section h4 {
+          font-size: 11pt;
+          margin-left: 0.5rem;
+          margin-bottom: .25rem;
+        }
+
+        .story__section h4 {
+          margin-top: 1rem;
+        }
+
+
+         .story h2 {
+          font-size: 11px;
+          /*margin-top: .5rem;*/
+          /*margin-left: 1.5rem;*/
+          display: inline-block;
+          border-bottom: 2px solid  #1C4D98;
+        
+        }
+
+        tr.spaceUnder>td {
+          padding-bottom: 3px;
+          text-align: justify;
+        }
+    }
+</style>
+
+<body>
+
+  <div class="content-wrapper">
+    <!--  LEFT -->
+    <div class="bio">
+      <h2><center>Curriculum Vitae</center></h2>
+      <center>
+        <div class="bio__photo">
+          <center>
+            <img src="assets/img/sugito.png" alt="" style="width:100%; margin-left: auto;margin-right: auto;">
+          </center>
+        </div>
+      </center>
+
+      <!-- <div class="line"></div> --><br>
+      <div class="bio__name"><center style="color: black;">Sugito</center></div>
+      <!-- <div class="line"></div> -->
+
+      <!-- PERSONAL -->
+      <div style="margin-left: 0.3cm; margin-top: -3cm;">
+        <table class="bordered" style="table-layout: fixed; font-size: 11px;">
+          <tbody align="left">
+          
+            <tr  class="spaceUnder">
+              <th width="20%">Date of Birth</th>
+              <td width="28%">June 12, 1981</td>
+            </tr><br>
+                      
+            <tr  class="spaceUnder">
+              <th width="20%">Address</th>
+              <td width="28%">586 Ang Mo Kio Ave 3 #03 - 3067  560586</td>
+            </tr><br>
+                    
+            <tr  class="spaceUnder">
+              <th width="20%">SG Phone</th>
+              <td width="28%">+65-98932411</td>
+            </tr><br>
+
+            <tr  class="spaceUnder">
+              <th width="20%">E-Mail</th>
+              <td width="28%">gitzjoey@yahoo.com</td>
+            </tr><br>
+
+            <tr  class="spaceUnder">
+              <th width="20%">Nationality</th>
+              <td width="28%">Indonesian</td>
+            </tr><br>
+
+            <tr  class="spaceUnder">
+              <th width="20%">Language</th>
+              <td width="28%">Indonesia (Native) ~ English</td>
+            </tr><br>
+
+            <tr  class="spaceUnder">
+              <th width="20%">Marital Status</th>
+              <td width="28%">Married</td>
+            </tr><br>
+
+            <tr  class="spaceUnder">
+              <th width="20%">Pass Holder</th>
+              <td width="28%">Permanent Resident (PR)</td>
+            </tr><br>
+          </tbody>
+        </table>
+      </div>
+      <!--  END PERSONAL -->
+
+      <!-- FORMAL EDUCATION -->
+      <!-- <div class="line"></div> -->
+      <div class="bio__name" style="margin-top: 1cm; margin-bottom: -1cm;"><center>Formal Education</center></div><br>
+      <!-- <div class="line"></div> -->
+
+        <div style="margin-left: 0.2cm;">
+          <table class="bordered" style="table-layout: fixed; font-size:11px;">
+            <tbody  align="left">
+              <tr  class="spaceUnder">
+                <td width="20%">2000 – 2004</td>
+                <td width="28%">Bina Nusantara University, Jakarta</td>
+              </tr><br>
+              
+              <tr  class="spaceUnder">
+                <td width="20%">1997 – 2000</td>
+                <td width="28%">SMU YMP, Bogor</td>
+              </tr><br>
+
+              <tr  class="spaceUnder">
+                <td width="20%">1993 – 1996</td>
+                <td width="28%">SMP Bruderan, Purwokerto</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><br>
+        <!--  EBD FORMAL EDUCATION -->
+
+          <!-- INFORMAL EDUCATIOAN -->
+          <!-- <div class="line"></div> -->
+          <div class="bio__name" style="margin-top: 1cm; margin-bottom: -2cm;"><center>Informal Education</center></div>
+          <!-- <div class="line"></div> -->
+
+          <div style="margin-left: 0.2cm;">
+            <table class="bordered" style="table-layout: fixed; font-size:12px;">
+              <tbody  align="left">
+                <tr class="spaceUnder">
+                  <td width="28%">
+                    <b>Certificate of achievement (2009)</b><br>
+                    Project Management Professional (PMP)<br>
+                    New Horizons, Singapore 
+                  </td>
+                </tr><br>
+
+                <tr  class="spaceUnder">
+                  <td width="28%">
+                    <b>Certificate of achievement (2003)</b><br>
+                    NETWORK ADMINISTRATOR<br>
+                    Bina Nusantara Training Center, Jakarta
+                  </td>
+                </tr><br>
+
+                <tr  class="spaceUnder">
+                  <td width="28%">
+                    <b>Certificate of achievement (2002)</b><br>
+                    HACKING WINDOWS 2000<br>
+                    Jasakom Training Center, Jakarta<br>
+                    HACKING LINUX<br>
+                    Jasakom Training Center, Jakarta
+                  </td>
+                </tr><br>
+
+                <tr  class="spaceUnder">
+                  <td width="28%">
+                    <b>Certificate of achievement (2002)</b><br>
+                    Pengenalan Animasi Flash 4<br>
+                    Bina Nusantara University, Jakarta
+                  </td>
+                </tr><br>
+
+                <tr  class="spaceUnder">
+                  <td width="28%">
+                    <b>Certificate of achievement (2000)</b><br>
+                    Computer, Business, and I
+                    Future’s Preparition To Get In Computer Business<br>
+                    Bina Nusantara University, Jakarta
+                  </td>
+                </tr><br>
+              </tbody>
+            </table>
+          </div>
+          <!-- END INFORMAL EDUCATION -->
+        </div>
+        <!-- END LEFT -->
+
+
+        <!-- RIGHT -->
+        <div class="story">
+          <br>
+          <div style="margin-left: -1cm; margin-top: -1cm;">
+          <table class="bordered" style="table-layout: fixed; ">
+            <tr>
+              <!-- PROFILE -->
+              <td>
+                <!-- <div class="line"></div> -->
+                <div class="bio__name"><center>Profile</center></div>
+                <!-- <div class="line"></div> -->
+
+                <ol style="font-size:11px; line-height:1.4;">
+                  <li>Experienced in IT. Including software, hardware, and management system.</li>
+                  <li>Highly motivated, dependable troubleshooter and problem-solver.</li>
+                  <li>A good listener and be able to communicate in strategic-logical way</li>
+                  <li>Able to easily adapt in new environment.</li>
+                  <li>Thrives on challenge.</li>
+                  <li>Enthusiastic learner who quickly grasps concepts and technical skills.</li>
+                </ol>
+
+                <!-- <div class="line"></div> -->
+                <div class="bio__name"><center>Managerial Skills</center></div>
+                <!-- <div class="line"></div> -->
+
+                <ol style="font-size:11px; line-height: 1.4;">
+                  <li>As a lead developer team.</li>
+                  <li>As a project manager for Danamon project (mutual fund)</li>
+                  <li>As an asistant manager for new mutual fund based system (JIVE)</li>
+                  <li>As an asistant functional team for BPI project (Philippines)</li>
+                  <li>As a project manager for UOB project (Singapore)</li>
+                  <li>Initiating a startup project (Homeklik.com)</li>
+                </ol>
+              </td>
+
+              <!-- TEKNIKAL SKIL -->
+              <td>
+                <!-- <div class="line"></div> -->
+                <div class="bio__name"><center>Technical Skills</center></div>
+                <!-- <div class="line"></div> -->
+                <ol>
+                  <li style="font-size:12px; line-height: 1.3;">
+                    <b>Programming & Scripting Language<b>
+                    <ul style="font-size:11px; font-weight: normal;">
+                      <li>PHP Enviroment (Laravel)</li>
+                      <li>NET Environment (C#, ASP.NET)</li>
+                      <li>Java Enviroment (JSF, Ibatis)</li>
+                      <li>SQL (MSSQL, Oracle) </li>
+                    </ul>
+                  </li>
+
+                  <!-- DEV TOOL -->
+                  <li style="font-size:12px;">
+                    <b>Development Tools<b>
+                    <ul style="font-size:11px; font-weight: normal;">
+                      <li>PHP/Laravel Framework 5 / 5.5 / 5.6</li>
+                      <li>Microsoft .NET Framework 1.1 / 2.0 / 3.5 / 4 / 5</li>
+                      <li>Microsoft Visual Studio .NET 2003 / 2005 / 2008 / 2015</li>
+                      <li>Microsoft Query Analyzer / Quest Software TOAD </li>
+                      <li>Sun Java 2 Standard Edition SDK v1.4.2 / 1.5 / 1.6</li>
+                      <li>Eclipse IDE / NetBeans 5.5 / PHPStorm</li>
+                      <li>Crystal Report 8 / 9 / 10 / 11 </li>
+                    </ul>
+                  </li>
+
+                  <li style="font-size:12px;">
+                    <b>Database<b>
+                    <ul style="font-size:11px; font-weight: normal;">
+                      <li>mySQL</li>
+                      <li>Microsoft SQL Server 2000 / 2005 / 2008 / 2015</li>
+                      <li>Oracle 9i Release 2 / 10g</li>
+                    </ul>
+                  </li>
+
+                  <li style="font-size:12px;">
+                    <b>Platform<b>
+                    <ul style="font-size:11px; font-weight: normal;">
+                      <li>Microsoft Windows Server Platform</li>
+                      <li>Unix / Linux Platform</li>
+                    </ul>
+                  </li>
+                </ol>
+              </td>
+            </tr>
+          </table>
+        </div>
+        
+
+
+        <!-- WORK EXPRIENCE -->
+        <!-- <div class="line"></div> -->
+        <div class="bio__name"><center>Work Experiencess</center></div><br>
+        <!-- <div class="line"></div> -->
+
+
+        <div style="margin-left: -0.3cm; margin-top: 1cm;">
+          <table class="bordered" style="table-layout: fixed;">
+            <tr>
+              <!-- LEFT WORK -->
+              <td>
+                <!-- work 1 -->
+                <h2>IHIS Pte Ltd (Aug 2018 – present)</h2>
+                <div style="margin-left: 0.2cm;">
+                  <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                    <tbody align="left">
+                      <tr class="spaceUnder">
+                        <th width="11%">Project</th>
+                        <td width="28%">Clinical Document (CDOC)</td>
+                      </tr>
+                      
+                      <tr class="spaceUnder">
+                        <th width="11%">Position</th>
+                        <td width="28%">Assistant Lead Engineer</td>
+                      </tr>
+
+                      <tr>
+                        <th width="11%" style="vertical-align: top;">Technology</th>
+                        <td width="28%" align="justify" >ASP.NET, C#.NET, EXT.NET, .NET CORE, MSSQL</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- work 2 -->
+                <h2>Homeklik (Jan 2016 – Feb 2018)</h2>
+                <div style="margin-left: 0.2cm;">
+                  <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                    <tbody align="left">
+                      <tr class="spaceUnder">
+                        <th width="11%">Project</th>
+                        <td width="28%">Homeklik.com</td>
+                      </tr>
+                          
+                      <tr class="spaceUnder">
+                        <th width="11%">Position</th>
+                        <td width="28%">Project Manager</td>
+                      </tr>
+
+                      <tr>
+                        <th width="11%" style="vertical-align: top;">Technology</th>
+                        <td width="28%" align="justify" >Full stack PHP/Laravel Development with MySQL database.Frontend VueJS with Socket.io implementationSystem CentOS Linux 7.2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+
+                <!-- work 3 -->
+                <h2>Firium Pte Ltd (Dec 2012 –  Sep 2015)</h2>
+                <div style="margin-left: 0.2cm;">
+                  <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                    <tbody align="left">
+                      <tr class="spaceUnder">
+                        <th width="11%">Project</th>
+                        <td width="28%">Great Eastern (GE) Insurance</td>
+                      </tr>
+                          
+                      <tr class="spaceUnder">
+                        <th width="11%">Position</th>
+                        <td width="28%">Lead Developer</td>
+                      </tr>
+
+                      <tr>
+                        <th width="11%" style="vertical-align: top;">Technology</th>
+                        <td width="28%" align="justify" >Java 1.5, Spring, IBatis, Crystal Report</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div><br>
+
+                <div style="margin-left: 0.2cm;">
+                  <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                    <tbody align="left">
+                      <tr class="spaceUnder">
+                        <th width="11%">Project</th>
+                        <td width="28%">UOB Wealth Management Planning (WMP)</td>
+                      </tr>
+                          
+                      <tr class="spaceUnder">
+                        <th width="11%">Position</th>
+                        <td width="28%">Project Manager</td>
+                      </tr>
+
+                      <tr>
+                        <th width="11%" style="vertical-align: top;">Technology</th>
+                        <td width="28%" align="justify" >Java 1.5, Spring, IBatis, Crystal Report</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- work4 -->
+                <h2>IHIS Pte Ltd (Apr 2010 – Sep 2012)</h2>
+                <div style="margin-left: 0.2cm;">
+                  <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                    <tbody align="left">
+                      <tr class="spaceUnder">
+                        <th width="11%">Project</th>
+                        <td width="28%">Clinician Order Entry (CCOE)</td>
+                      </tr>
+                          
+                      <tr class="spaceUnder">
+                        <th width="11%">Position</th>
+                        <td width="28%">Developer</td>
+                      </tr>
+
+                      <tr>
+                        <th width="11%" style="vertical-align: top;">Technology</th>
+                        <td width="28%" align="justify" >C#.NET EXT.NET, MSSQL2005</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </td>
+              
+              <td width="5%"></td>
+
+              <!-- RIGHT QORK -->
+              <td>
+
+              <!-- work 5 -->
+              <h2>NCS Pte Ltd (Apr 2009 – Apr 2010) </h2>
+              <div style="margin-left: 0.2cm;">
+                <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                  <tbody align="left">
+                    <tr class="spaceUnder">
+                      <th width="11%">Project</th>
+                      <td width="28%">Citibank Fund Transfer & Integrations (FTI ASPAC)</td>
+                    </tr>
+                          
+                    <tr class="spaceUnder">
+                      <th width="11%">Position</th>
+                      <td width="28%">Developer</td>
+                    </tr>
+
+                    <tr>
+                      <th width="11%" style="vertical-align: top;">Technology</th>
+                      <td width="28%" align="justify" >VB.NET 2.0, MQ, MSSQL2005,Tivoli,Crystal Report</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div style="margin-left: 0.2cm;">
+                <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                  <tbody align="left">
+                    <tr class="spaceUnder">
+                      <th width="11%">Project</th>
+                      <td width="28%">Citibank Asia Global Interdict (GI ASPAC)</td>
+                    </tr>
+                          
+                    <tr class="spaceUnder">
+                      <th width="11%">Position</th>
+                      <td width="28%">Support</td>
+                    </tr>
+
+                    <tr>
+                      <th width="11%" style="vertical-align: top;">Technology</th>
+                      <td width="28%" align="justify" >UNIX,Oracle 10g,MQ,Tivoli</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- work 6 -->
+              <h2>PT. Jatis Solutions (2004 – 2008 ) </h2>
+              <div style="margin-left: 0.2cm;">
+                <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                  <tbody align="left">
+                    <tr class="spaceUnder">
+                      <th width="11%">Project</th>
+                      <td width="28%">Avantrade</td>
+                    </tr>
+                          
+                    <tr class="spaceUnder">
+                      <th width="11%">Position</th>
+                      <td width="28%">Technical Designer</td>
+                    </tr>
+
+                    <tr>
+                      <th width="11%" style="vertical-align: top;">Technology</th>
+                      <td width="28%" align="justify" >JSF,IBatis,Strut,EJB,Oracle 10g,MQ,Crystal Report,C#.NET</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div style="margin-left: 0.2cm;">
+                <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                  <tbody align="left">
+                    <tr class="spaceUnder">
+                      <th width="11%">Project</th>
+                      <td width="28%">JatisInvest (JIVE)</td>
+                    </tr>
+                          
+                    <tr class="spaceUnder">
+                      <th width="11%">Position</th>
+                      <td width="28%">Programmer</td>
+                    </tr>
+
+                    <tr>
+                      <th width="11%" style="vertical-align: top;">Technology</th>
+                      <td width="28%" align="justify" >ASP.NET,C#.NET,Crystal Report,MSSQL2005</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+
+              <!-- !-- work 6 --> 
+              <h2>PT. Adisakti Utama, Meruya (1999 – 2003 ) </h2>
+              <div style="margin-left: 0.2cm;">
+                <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                  <tbody align="left">
+                    <tr class="spaceUnder">
+                      <th width="11%">Position</th>
+                      <td width="28%">Network Administrator</td>
+                    </tr>
+                          
+                    <tr class="spaceUnder">
+                      <th width="11%" style="vertical-align: top;">Responsibility</th>
+                      <td width="28%">
+                        <ul>
+                          <li style="margin-left: -0.5cm;">Designing the network architecture and topology</li>
+                          <li style="margin-left: -0.5cm;">Running the web server, DHCP server, and proxy server</li>
+                          <li style="margin-left: -0.5cm;">Maintaining the network operations</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </td>
+
+            <!-- <div class="line"></div> -->
+            <!-- <div class="bio__name"><center>Part Time / External Project Experiences</center></div> -->
+            <!-- <div class="line"></div> -->
+
+            <div style="margin-left: 0.3cm; margin-top: -1cm;">
+              <table class="bordered" style="table-layout: fixed; ">
+                <tr>
+                  <td>
+                    <!-- work 1 -->
+                    <h2>PT TELKOM – www.telkom-indonesia.com</h2>
+                    <div style="margin-left: 0.2cm;">
+                      <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                        <tbody align="left">
+                          <tr class="spaceUnder">
+                            <th width="11%">Project</th>
+                            <td width="28%">BPS (Base Positioning System) Tool</td>
+                          </tr>
+                                
+                          <tr class="spaceUnder">
+                            <th width="11%">Project Size</th>
+                            <td width="28%">Small (used for 100 staff)</td>
+                          </tr>
+
+                          <tr>
+                            <th width="11%" style="vertical-align: top;">Technology</th>
+                            <td width="28%" align="justify" >C#.NET 3.5</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </td>
+
+                  <td>
+                    <!-- work 1 -->
+                    <h2>Retail Product – Point Of Sales System</h2>
+                    <div style="margin-left: 0.2cm;">
+                      <table class="bordered" style="table-layout: fixed; font-size:10px;">
+                        <tbody align="left">
+                          <tr class="spaceUnder">
+                            <th width="11%">Project</th>
+                            <td width="28%">BPS (Base Positioning System) Tool</td>
+                          </tr>
+                                    
+                          <tr class="spaceUnder">
+                            <th width="11%">Project Size</th>
+                            <td width="28%">Medium (used for less than 10 trading company)</td>
+                          </tr>
+
+                          <tr>
+                            <th width="11%" style="vertical-align: top;">Technology</th>
+                            <td width="28%" align="justify" >C#.NET 3.5</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+        </tr>
+      </table>
+    </div>
+          
+
+  </div>
+</body>
+</html>
+<script type="text/javascript">window.print();</script>
